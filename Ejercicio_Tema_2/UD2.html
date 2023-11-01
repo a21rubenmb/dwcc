@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividade 2 Rubén Míguez Bouzas</title>
+    <script>
+        let numeroIntroducido = 0;
+        do {
+            numeroIntroducido = prompt("Introduce un número:", "0");
+            if (esNumeroPrimo(numeroIntroducido)) {
+                console.log(`El numero ${numeroIntroducido} es un número primo`);
+            } else {
+                console.log(`El numero ${numeroIntroducido} NO es un número primo`);
+            }
+            numeroIntroducido = "fin";
+        } while (numeroIntroducido != "fin");
+        
+        function esNumeroPrimo(numero) {
+            if (numero <= 1) {
+                return false;
+            }
+            for (let i = 2; i < numero; i++) {
+                if (numero % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
