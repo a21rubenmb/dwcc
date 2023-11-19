@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas e horas</title>
+</head>
+
+<body>
+    <script>
+
+        function diasPendentes() {
+            const dataInicial = new Date();
+            const dataFinal = new Date(`2023-06-25`);
+            const diferenciaEnMilisegundos = dataInicial - dataFinal;
+            let diasPendentes = Math.abs(Math.floor(diferenciaEnMilisegundos / (1000 * 60 * 60 * 24)));
+            alert(`O total de días pendentes ata o 25/06/2023 son: ${diasPendentes}`)
+        }
+
+        function obterAnosDeFinDeSemana(dia, mes) {
+
+            const anoActual = new Date().getFullYear();
+            const datanacemento = new Date(`${anoActual}-${mes}-${dia}`);
+            const opcionsVenta = "width=300,height=300,top=400,left=400";
+            const anoFinal = 2100;
+            console.log(`Ata o ano 2100, o día ${dia}/${mes} será fin de semana nos seguientes anos:`)
+            ventaEmerxente = window.open("", "", opcionsVenta);
+            ventaEmerxente.document.write(`<p>Ata o ano 2100, o día ${dia}/${mes} será fin de semana nos seguientes anos:</p>`);
+            for (let ano = anoActual; ano <= anoFinal; ano++) {
+                // Establecer el ano en la data de nacemento
+                datanacemento.setFullYear(ano);
+                // Comprobar si el día de la semana es sábado (6) o domingo (0)
+                if (datanacemento.getDay() === 0 || datanacemento.getDay() === 6) {
+                    console.log(`Ano ${datanacemento.getFullYear()}`);
+                    ventaEmerxente.document.write(`<p>O ano ${datanacemento.getFullYear()}</p>`)
+                }
+            }
+        }
+
+        function obterFormatosData() {
+            const dataActual = new Date();
+            const opcionsDataLonga = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formato = prompt("Introduce o formato da data (curto, longo ou ingles)");
+            switch (formato) {
+                case "curto":
+                    alert("Formato de data curta: " + (dataActual.getDate() + 1) + '/' + dataActual.getMonth() + '/' + dataActual.getFullYear());
+                    break;
+                case "longo":
+
+                    alert("Formato de data longa: " + dataActual.toLocaleDateString('es-ES', opcionsDataLonga));
+                    break;
+                case "ingles":
+                    alert("Formato de data longa: " + dataActual.toLocaleDateString('en-US', opcionsDataLonga));
+                    break;
+            }
+        }
+
+        function obterFormatosHora() {
+            const dataActual = new Date();
+            const formato = prompt("Introduce o formato da hora (detallada, 12h)");
+            const opcionsHoraDetallada = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            const hora24 = { hour: 'numeric', minute: 'numeric', hour12: true };
+
+            switch (formato) {
+                case "detallada":
+                    alert(dataActual.toLocaleTimeString('es-ES', opcionsHoraDetallada));
+                    break;
+                case "12h":
+                    alert(dataActual.toLocaleTimeString('es-ES', hora24));
+                    break;
+            }
+        }
+
+        const dia = prompt("Introduce o día do teu cumpreanos:");
+        const mes = prompt("Introduce o mes do teu cumpreanos:");
+
+        obterAnosDeFinDeSemana(dia, mes);
+        diasPendentes();
+        obterFormatosData();
+        obterFormatosHora();
+    </script>
+</body>
+
+</html>

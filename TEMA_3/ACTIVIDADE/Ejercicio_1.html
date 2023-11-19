@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta emerxente</title>
+</head>
+<body>
+
+<script>
+    let ventaEmerxente;
+    function abrirVenta() {
+        //Pedimos confirmación ó usuario e, se o permite, abrimos a ventá
+        let confirmacion = window.confirm("¿Queres abrir unha nova ventá emerxente?");
+        if (confirmacion == true) {
+            // Parámetros para la ventana emergente
+            let opcionsVenta = "width=300,height=300,top=400,left=400";
+            // Abrir a ventá emerxente engandindo as propiedades solicitadas
+                ventaEmerxente = window.open("", "", opcionsVenta);
+                encherVenta(ventaEmerxente);
+     }
+}
+   
+
+    function pecharVenta() {
+        if(ventaEmerxente) {
+            console.log("premeches pechar");
+            ventaEmerxente.close();
+            ventaEmerxente = null;
+            console.log("A ventá foi pechada");
+        } else {
+            alert("A ventá non está aberta");
+        }
+    }
+    
+
+    function encherVenta(venta) {
+            venta.document.write("<h3>Exemplo de Ventá nova</h3>");
+            venta.document.write("<p>URL: " + window.location.href + "</p>");
+            venta.document.write("<p>PROTOCOLO: " + window.location.protocol + "</p>");
+            venta.document.write("<p>NAVEGADOR: " + window.navigator.userAgent + "</p>");
+            venta.document.write("<p>JAVA: " + window.navigator.javaEnabled() + "</p>");
+            venta.focus();
+            }
+
+  // Función para mover a ventá emerxente con By (A unha posición relativa con respecto á orixinal)
+    function moverVentaBy() {
+    ventaEmerxente.moveBy(50, 50);
+    ventaEmerxente.focus();
+  }
+
+  // Función para mover a ventá emerxente con To (A unha posición específica)
+  function moverVentaTo() {
+    ventaEmerxente.moveTo(100, 100);
+    ventaEmerxente.focus();
+  }
+
+ function redimensionarVenta(ancho, alto) {
+    ventaEmerxente.resizeTo(ancho, alto);
+    ventaEmerxente.focus();
+ }
+
+ function aumentarTamanoVenta(ancho, alto) {
+    console.log("El ancho a añadir es: " + ancho);
+    console.log("El alto a añadir es: " + alto);
+    console.log(ventaEmerxente.innerWidth);
+    console.log(ventaEmerxente.innerHeight);
+
+    let novoAncho = ventaEmerxente.innerWidth + ancho;
+    let novoAlto = ventaEmerxente.innerHeight + alto;
+    console.log(novoAlto);
+    console.log(novoAncho);
+    ventaEmerxente.resizeTo(novoAncho, novoAlto)
+    ventaEmerxente.focus();
+ }
+
+</script>
+
+<button onclick="abrirVenta()">Abrir Ventá</button>
+<button onclick="pecharVenta()">Pechar Ventá</button>
+<button onclick="moverVentaBy()">Mover ventá método by</button>
+<button onclick="moverVentaTo()">Mover ventá método to</button>
+<button onclick="redimensionarVenta(500, 500)">Redimensionar ventá a  500x500</button>
+<button onclick="aumentarTamanoVenta(50, 50)">Aumentar tamaño ventá en 50px</button>
+</body>
+</html>
+
