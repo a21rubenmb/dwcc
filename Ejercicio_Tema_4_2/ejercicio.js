@@ -15,7 +15,7 @@ class Disco {
         console.log("Grupo: " + this.grupo);
         console.log("ano: " + this.ano);
         console.log("Tipo de Música: " + this.tipoDeMusica);
-        console.log("Prestado: " + (this.ePrestado ? "Sí" : "No") + "\n");
+        console.log("Prestado: " + (this.ePrestado ? "Sí" : "Non") + "\n");
     }
 
         // Método con todos os atributos
